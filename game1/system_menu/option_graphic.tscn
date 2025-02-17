@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqmutegsb3702"]
+
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_erm6y"]
+[ext_resource type="Script" path="res://system_menu/option_graphic.gd" id="2_fvrpb"]
+[ext_resource type="Theme" uid="uid://cjrfgel6g1bec" path="res://theme/theme_label_title.tres" id="3_7ft73"]
+
+[node name="option_graphic" type="Control"]
+custom_minimum_size = Vector2(500, 380)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_erm6y")
+script = ExtResource("2_fvrpb")
+focus_on = NodePath("PanelContainer/VBoxContainer/VBoxContainer/chk_fullscreen")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 370)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -185.0
+offset_right = 250.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_7ft73")
+text = "Graphic Options"
+horizontal_alignment = 1
+
+[node name="btn_close" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="chk_fullscreen" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="lbl_scaling3d_mode" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scaling 3D Mode"
+
+[node name="opt_scaling3d_mode" type="OptionButton" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Bilinear"
+popup/item_1/text = "FSR"
+popup/item_1/id = 1
+popup/item_2/text = "FSR2"
+popup/item_2/id = 2
+
+[node name="label_scaling3d" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Scaling 3D"
+
+[node name="HSlider_scaling3d" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="lbl_msaa3d" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MSAA 3D"
+
+[node name="opt_msaa3d" type="OptionButton" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_1/text = "MSAA 2X"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA 4X"
+popup/item_2/id = 2
+popup/item_3/text = "MSAA 8X"
+popup/item_3/id = 3
+
+[node name="chk_fxaa" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FXAA"
+
+[node name="lbl_msaa2d" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MSAA 2D"
+
+[node name="opt_msaa2d" type="OptionButton" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_1/text = "MSAA 2X"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA 4X"
+popup/item_2/id = 2
+popup/item_3/text = "MSAA 8X"
+popup/item_3/id = 3
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/HBoxContainer/btn_close" to="." method="_on_btn_close_button_down"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/chk_fullscreen" to="." method="_on_chk_fullscreen_toggled"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/VBoxContainer/opt_scaling3d_mode" to="." method="_on_opt_scaling_3d_mode_item_selected"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_scaling3d" to="." method="_on_h_slider_scaling_3d_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_scaling3d" to="." method="_on_h_slider_scaling_3d_value_changed"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/VBoxContainer/opt_msaa3d" to="." method="_on_opt_msaa_3d_item_selected"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/chk_fxaa" to="." method="_on_chk_fxaa_toggled"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/VBoxContainer/opt_msaa2d" to="." method="_on_opt_msaa_2d_item_selected"]

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjrfgel6g1bec"]
+
+[ext_resource type="FontFile" uid="uid://dyftj81ykdpjk" path="res://theme/fonts/SecularOne-Regular.ttf" id="1_qun8x"]
+
+[resource]
+default_font = ExtResource("1_qun8x")
+Label/font_sizes/font_size = 22
+Label/fonts/font = ExtResource("1_qun8x")

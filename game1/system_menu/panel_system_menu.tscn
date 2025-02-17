@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://ed21o1cq0x5a"]
+
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_57qlq"]
+[ext_resource type="Script" path="res://system_menu/panel_system_menu.gd" id="1_qhiwp"]
+
+[node name="panel_system_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_57qlq")
+script = ExtResource("1_qhiwp")
+focus_on = NodePath("PanelContainer/option_list/btn_graphic")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -70.0
+offset_right = 56.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+
+[node name="option_list" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="btn_resume" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Resume"
+
+[node name="btn_graphic" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Graphic"
+
+[node name="btn_audio" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Audio"
+
+[node name="btn_gameplay" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Gameplay"
+
+[node name="btn_keymap" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Key Mapping"
+
+[node name="btn_load" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Load"
+
+[node name="btn_main_menu" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="btn_quit" type="Button" parent="PanelContainer/option_list"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="button_down" from="PanelContainer/option_list/btn_resume" to="." method="_on_btn_resume_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_graphic" to="." method="_on_btn_graphic_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_audio" to="." method="_on_btn_audio_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_gameplay" to="." method="_on_btn_gameplay_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_keymap" to="." method="_on_btn_keymap_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_load" to="." method="_on_btn_load_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_main_menu" to="." method="_on_btn_main_menu_button_down"]
+[connection signal="button_down" from="PanelContainer/option_list/btn_quit" to="." method="_on_btn_quit_button_down"]

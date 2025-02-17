@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://hbltn7an86om"]
+
+[ext_resource type="Script" path="res://gameplay_system/save_point.gd" id="1_cvbe3"]
+[ext_resource type="PackedScene" uid="uid://bc18u2jc24ons" path="res://models/Sign.gltf" id="1_jxay1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hk7q8"]
+radius = 1.0
+
+[node name="SavePoint" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_cvbe3")
+
+[node name="Sign" parent="." instance=ExtResource("1_jxay1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+shape = SubResource("SphereShape3D_hk7q8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

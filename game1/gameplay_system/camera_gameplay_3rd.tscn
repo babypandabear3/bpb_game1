@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dild3ilt7aysv"]
+
+[ext_resource type="Script" path="res://gameplay_system/camera_gameplay_3_rd.gd" id="1_jitgq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ofkba"]
+
+[node name="camera_gameplay_3rd" type="Node3D"]
+script = ExtResource("1_jitgq")
+
+[node name="axis_y" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="axis_x" type="SpringArm3D" parent="axis_y"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_ofkba")
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="axis_y/axis_x"]
+
+[node name="screencover" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

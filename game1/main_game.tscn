@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://chofw2rf2dj0u"]
+
+[ext_resource type="Script" path="res://main_game.gd" id="1_6iefw"]
+[ext_resource type="PackedScene" uid="uid://clgaptlp38xvi" path="res://actors/player.tscn" id="3_73k8a"]
+[ext_resource type="Script" path="res://backend/behavior_player_control.gd" id="4_2yv3q"]
+[ext_resource type="PackedScene" uid="uid://dild3ilt7aysv" path="res://gameplay_system/camera_gameplay_3rd.tscn" id="4_6rgdp"]
+[ext_resource type="Script" path="res://backend/res_savedata.gd" id="4_w0l4k"]
+[ext_resource type="PackedScene" uid="uid://qen7j2txwcrt" path="res://main_menu_screen/panel_save.tscn" id="7_0o3tc"]
+[ext_resource type="PackedScene" uid="uid://vg7duhhxrylm" path="res://system_menu/system_menu.tscn" id="10_yndub"]
+
+[sub_resource type="Resource" id="Resource_cjst8"]
+resource_local_to_scene = true
+script = ExtResource("4_w0l4k")
+unique_id = "2025-02-12T16:57:09"
+node_transform = true
+
+[sub_resource type="Resource" id="Resource_7hl5g"]
+resource_local_to_scene = true
+script = ExtResource("4_2yv3q")
+
+[node name="main_game" type="Node3D"]
+script = ExtResource("1_6iefw")
+debug_level = "level_2"
+
+[node name="level_root" type="Node3D" parent="." groups=["level_root"]]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.912179, -0.0783264, 0.402236, -0.216193, 0.741867, 0.634739, -0.348123, -0.665956, 0.659782, 0, 0, 0)
+
+[node name="System_Menu" parent="." instance=ExtResource("10_yndub")]
+
+[node name="Player" parent="." instance=ExtResource("3_73k8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+savedata = SubResource("Resource_cjst8")
+behavior = SubResource("Resource_7hl5g")
+
+[node name="camera_gameplay_3rd" parent="." instance=ExtResource("4_6rgdp")]
+follow = NodePath("../Player")
+
+[node name="panel_save" parent="." instance=ExtResource("7_0o3tc")]
+unique_name_in_owner = true
+visible = false

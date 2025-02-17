@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwyyj14om1haf"]
+
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_7bhut"]
+[ext_resource type="Script" path="res://main_menu_screen/panel_option.gd" id="2_8yfs1"]
+
+[node name="panel_option" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7bhut")
+script = ExtResource("2_8yfs1")
+focus_on = NodePath("PanelContainer/container_menu/btn_graphic")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -114.0
+offset_right = 66.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container_menu" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_graphic" type="Button" parent="PanelContainer/container_menu"]
+layout_mode = 2
+text = "Graphic"
+
+[node name="btn_audio" type="Button" parent="PanelContainer/container_menu"]
+layout_mode = 2
+text = "Audio"
+
+[node name="btn_gameplay" type="Button" parent="PanelContainer/container_menu"]
+layout_mode = 2
+text = "Gameplay"
+
+[node name="btn_keymap" type="Button" parent="PanelContainer/container_menu"]
+layout_mode = 2
+text = "Key Mapping"
+
+[node name="btn_close" type="Button" parent="PanelContainer/container_menu"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="button_down" from="PanelContainer/container_menu/btn_graphic" to="." method="_on_btn_graphic_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_audio" to="." method="_on_btn_audio_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_gameplay" to="." method="_on_btn_gameplay_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_keymap" to="." method="_on_btn_keymap_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_close" to="." method="_on_btn_close_button_down"]

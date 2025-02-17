@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://oqobyv5cordy"]
+
+[ext_resource type="Script" path="res://system_menu/option_key_mapper.gd" id="1_ap1qh"]
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_vceaj"]
+[ext_resource type="PackedScene" uid="uid://lcsiehrhndul" path="res://system_menu/option_kbm.tscn" id="2_8ic7d"]
+[ext_resource type="PackedScene" uid="uid://hrf36p0a5ewm" path="res://system_menu/option_gamepad.tscn" id="3_ojukn"]
+
+[node name="option_KeyMapper" type="Control"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vceaj")
+script = ExtResource("1_ap1qh")
+focus_on = NodePath("VBoxContainer/PanelContainer/container_menu/btn_kbm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="container_menu" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="btn_kbm" type="Button" parent="VBoxContainer/PanelContainer/container_menu"]
+layout_mode = 2
+text = "Keyboard / Mouse"
+
+[node name="btn_gamepad" type="Button" parent="VBoxContainer/PanelContainer/container_menu"]
+layout_mode = 2
+text = "Gamepad"
+
+[node name="btn_clear" type="Button" parent="VBoxContainer/PanelContainer/container_menu"]
+layout_mode = 2
+text = "Clear Key Mapping"
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/container_menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_close" type="Button" parent="VBoxContainer/PanelContainer/container_menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Close"
+
+[node name="ScrollContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="container" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Keyboard_Mouse" parent="VBoxContainer/ScrollContainer/container" instance=ExtResource("2_8ic7d")]
+layout_mode = 2
+
+[node name="Gamepad" parent="VBoxContainer/ScrollContainer/container" instance=ExtResource("3_ojukn")]
+layout_mode = 2
+
+[connection signal="button_down" from="VBoxContainer/PanelContainer/container_menu/btn_kbm" to="." method="_on_btn_kbm_button_down"]
+[connection signal="button_down" from="VBoxContainer/PanelContainer/container_menu/btn_gamepad" to="." method="_on_btn_gamepad_button_down"]
+[connection signal="button_down" from="VBoxContainer/PanelContainer/container_menu/btn_clear" to="." method="_on_btn_clear_button_down"]
+[connection signal="button_down" from="VBoxContainer/PanelContainer/container_menu/btn_close" to="." method="_on_btn_close_button_down"]

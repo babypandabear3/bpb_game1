@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://uoylx5x0vn5k"]
+
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_fw02f"]
+[ext_resource type="Script" path="res://main_menu_screen/panel_main_menu.gd" id="2_ofp70"]
+
+[node name="panel_main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fw02f")
+script = ExtResource("2_ofp70")
+focus_on = NodePath("PanelContainer/container_menu/btn_continue")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -87.5
+offset_right = 48.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container_menu" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="btn_continue" type="Button" parent="PanelContainer/container_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+
+[node name="btn_new_game" type="Button" parent="PanelContainer/container_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="btn_load" type="Button" parent="PanelContainer/container_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load"
+
+[node name="btn_option" type="Button" parent="PanelContainer/container_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Option"
+
+[node name="btn_exit" type="Button" parent="PanelContainer/container_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit"
+
+[connection signal="button_down" from="PanelContainer/container_menu/btn_continue" to="." method="_on_btn_continue_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_new_game" to="." method="_on_btn_new_game_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_load" to="." method="_on_btn_load_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_option" to="." method="_on_btn_option_button_down"]
+[connection signal="button_down" from="PanelContainer/container_menu/btn_exit" to="." method="_on_btn_exit_button_down"]

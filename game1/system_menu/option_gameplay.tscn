@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5gu5hnfa682"]
+
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://theme/FlatUI4/kenneyUI-red.tres" id="1_y757d"]
+[ext_resource type="Script" path="res://system_menu/option_gameplay.gd" id="2_85ofa"]
+[ext_resource type="Theme" uid="uid://cjrfgel6g1bec" path="res://theme/theme_label_title.tres" id="3_2l4hf"]
+
+[node name="option_gameplay" type="Control"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -20.0
+offset_right = 250.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y757d")
+script = ExtResource("2_85ofa")
+focus_on = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HSlider_player_damage")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("3_2l4hf")
+text = "Gameplay Options"
+horizontal_alignment = 1
+
+[node name="btn_close" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="lbl_player_damage" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player Damage : "
+
+[node name="HSlider_player_damage" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 200.0
+value = 100.0
+
+[node name="lbl_enemy_damage" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player Damage : "
+
+[node name="HSlider_enemy_damage" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 200.0
+value = 100.0
+
+[node name="lbl_aggressiveness" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enemy Aggressiveness"
+
+[node name="HSlider_aggressiveness" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 200.0
+value = 100.0
+
+[node name="lbl_mouse" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="HSlider_mouse" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1000.0
+value = 200.0
+
+[node name="lbl_gamepad" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="HSlider_gamepad" type="HSlider" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1000.0
+value = 200.0
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/HBoxContainer/btn_close" to="." method="_on_btn_close_button_down"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_player_damage" to="." method="_on_h_slider_player_damage_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_player_damage" to="." method="_on_h_slider_player_damage_value_changed"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_enemy_damage" to="." method="_on_h_slider_enemy_damage_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_enemy_damage" to="." method="_on_h_slider_enemy_damage_value_changed"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_aggressiveness" to="." method="_on_h_slider_aggressiveness_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_aggressiveness" to="." method="_on_h_slider_aggressiveness_value_changed"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_mouse" to="." method="_on_h_slider_mouse_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_mouse" to="." method="_on_h_slider_mouse_value_changed"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_gamepad" to="." method="_on_h_slider_gamepad_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VBoxContainer/HSlider_gamepad" to="." method="_on_h_slider_gamepad_value_changed"]

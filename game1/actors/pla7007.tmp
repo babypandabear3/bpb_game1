@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://clgaptlp38xvi"]
+
+[ext_resource type="Script" path="res://root_nodes/charbody.gd" id="1_27r7v"]
+[ext_resource type="Script" path="res://backend/behavior_player_control.gd" id="2_h38qh"]
+[ext_resource type="Script" path="res://backend/res_savedata.gd" id="2_hge10"]
+[ext_resource type="PackedScene" uid="uid://bk4q27kn1w8df" path="res://models/Character_Soldier.gltf" id="4_4b43o"]
+
+[sub_resource type="Resource" id="Resource_e0rv6"]
+resource_local_to_scene = true
+script = ExtResource("2_hge10")
+unique_id = "2025-02-12T16:57:09"
+node_transform = true
+
+[sub_resource type="Resource" id="Resource_ui2ku"]
+resource_local_to_scene = true
+script = ExtResource("2_h38qh")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_brta4"]
+height = 2.2
+
+[node name="Player" type="CharacterBody3D"]
+floor_snap_length = 0.0
+script = ExtResource("1_27r7v")
+uniqueID = "2025-02-12T16:57:09"
+savedata = SubResource("Resource_e0rv6")
+player_control = false
+behavior = SubResource("Resource_ui2ku")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_brta4")
+
+[node name="ModelSoldier" parent="." instance=ExtResource("4_4b43o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)

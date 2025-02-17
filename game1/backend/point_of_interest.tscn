@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvypxe4na8war"]
+
+[ext_resource type="Script" path="res://backend/point_of_interest.gd" id="1_o1fos"]
+
+[node name="PointOfInterest" type="Marker3D" groups=["point_of_interest"]]
+script = ExtResource("1_o1fos")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+text = "Interest Point"

@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://vg7duhhxrylm"]
+
+[ext_resource type="Script" path="res://system_menu/system_menu.gd" id="1_82mhu"]
+[ext_resource type="PackedScene" uid="uid://ed21o1cq0x5a" path="res://system_menu/panel_system_menu.tscn" id="2_vig5c"]
+[ext_resource type="PackedScene" uid="uid://oqobyv5cordy" path="res://system_menu/option_key_mapper.tscn" id="3_eie22"]
+[ext_resource type="PackedScene" uid="uid://cqmutegsb3702" path="res://system_menu/option_graphic.tscn" id="5_1d8if"]
+[ext_resource type="PackedScene" uid="uid://b5gu5hnfa682" path="res://system_menu/option_gameplay.tscn" id="6_gm2we"]
+[ext_resource type="PackedScene" uid="uid://cmgebnmi52uur" path="res://system_menu/option_audio.tscn" id="6_yimse"]
+[ext_resource type="PackedScene" uid="uid://cb4gp22j7rxhw" path="res://main_menu_screen/panel_load.tscn" id="7_e3le3"]
+
+[node name="System_Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_82mhu")
+
+[node name="panel_system_menu" parent="." instance=ExtResource("2_vig5c")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="option_KeyMapper" parent="." instance=ExtResource("3_eie22")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = -376.5
+offset_right = 376.5
+
+[node name="option_graphic" parent="." instance=ExtResource("5_1d8if")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="option_audio" parent="." instance=ExtResource("6_yimse")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="option_gameplay" parent="." instance=ExtResource("6_gm2we")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="option_load" parent="." instance=ExtResource("7_e3le3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
